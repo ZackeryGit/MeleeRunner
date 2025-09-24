@@ -1,0 +1,82 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class RoomManager : MonoBehaviour
+{
+    public RoomPlacerBehavior roomPlacer;
+
+    [Header("Settings")]
+    public IntDataSO maxRoomBalance;
+
+    [Header("Rooms")]
+    private Dictionary<int, RoomBehavior> activeRooms = new Dictionary<int, RoomBehavior>();
+
+    [Header("Info")]
+    public IntDataSO roomBalance;
+    public RoomBehavior lastRoom = null;
+
+    public void addRooms(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            addRoom();
+        }
+    }
+
+    public void addRoom()
+    {
+        int id = lastRoom ? lastRoom.id + 1 : 1;
+        Debug.Log("Trying to Place Room: " + id);
+        RoomBehavior newRoom = roomPlacer.CreateRoom();
+
+        if (newRoom == null)
+        {
+            Debug.LogWarning("Unable to place room");
+            return;
+        }
+
+        registerRoom(newRoom);
+    }
+
+    public void registerRoom(RoomBehavior newRoom)
+    {
+        int id = lastRoom ? lastRoom.id + 1 : 1;
+
+        // Room Register
+        newRoom.id = id;
+        newRoom.roomManager = this;
+
+        activeRooms.Add(newRoom.id, newRoom);
+        lastRoom = newRoom;
+
+        // Manager  Update
+        updateRoomBalance(newRoom);
+    }
+
+    public void OnRoomEnter(int roomId)
+    {
+        Debug.Log("Player entered room with ID: " + roomId);
+        // Add your logic here for when a player enters a room
+    }
+
+    // Util Functions
+    private void updateRoomBalance(RoomBehavior newRoom)
+    {
+        RoomInfoSO roomInfo = newRoom.roomInfo;
+        RoomDirection roomDirection = roomInfo.direction;
+        Debug.Log(roomDirection);
+        switch (roomDirection)
+        {
+            case RoomDirection.Left:
+                roomBalance.value--;
+                break;
+            case RoomDirection.Right:
+                roomBalance.value++;
+                break;
+            default:
+                break;
+        };
+        Debug.Log(roomBalance.value);
+    }
+}
