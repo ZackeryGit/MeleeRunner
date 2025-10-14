@@ -44,7 +44,7 @@ public class PlayerInput : MonoBehaviour
     {
         if (input.isPressed)
         {
-            playerController.tryJump();
+            playerController.TryJump();
         }
     }
 
