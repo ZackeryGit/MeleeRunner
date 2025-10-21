@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] PlayerController playerController;
+    [SerializeField] SwordBehavior swordBehavior;
 
     #region Functions
 
@@ -23,6 +24,12 @@ public class PlayerInput : MonoBehaviour
     void OnValidate()
     {
         playerController = GetComponent<PlayerController>();
+    }
+
+    public void OnMouseOne(InputValue input)
+    {
+        Debug.Log("Click");
+        swordBehavior.Swing();
     }
 
     public void OnMove(InputValue input)

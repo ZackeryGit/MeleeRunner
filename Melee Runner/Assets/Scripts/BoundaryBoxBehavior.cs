@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class BoundaryBoxBehavior : MonoBehaviour
@@ -14,6 +12,7 @@ public class BoundaryBoxBehavior : MonoBehaviour
     // MonoBehaviour Methods
     void Awake()
     {
+        if (boundaryContainer == null) { return; }
         foreach (Transform child in boundaryContainer.transform)
         {
             boundaryObjects.Add(child.gameObject);
@@ -29,8 +28,8 @@ public class BoundaryBoxBehavior : MonoBehaviour
     // Functions
     public List<GameObject> getOverlappingObjects(LayerMask? layerMask, string tag)
     {
+        
         List<GameObject> overlappingObjects = new List<GameObject>();
-
         foreach (Collider collider in boundaries)
         {
             Collider[] overlaps = Physics.OverlapBox(
