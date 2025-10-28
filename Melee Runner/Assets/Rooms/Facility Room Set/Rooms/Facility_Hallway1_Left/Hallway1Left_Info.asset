@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b09ec598725f9349ae24a79f1a35fe4, type: 3}
+  m_Name: Hallway1Left_Info
+  m_EditorClassIdentifier: Assembly-CSharp::RoomInfoSO
+  roomPrefab: {fileID: 539073916365988882, guid: e3ad83142c9ad79469afa7a49d809c51, type: 3}
+  boundaryPrefab: {fileID: 5552420531865971453, guid: 64a9ead71ab95974583073ccdb1a237b, type: 3}
+  spawnWeight: 50
+  direction: 2

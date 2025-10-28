@@ -32,7 +32,6 @@ public class RoomManager : MonoBehaviour
 
         if (newRoom == null)
         {
-            Debug.LogWarning("Unable to place room");
             return;
         }
 
@@ -41,6 +40,7 @@ public class RoomManager : MonoBehaviour
 
     public void registerRoom(RoomBehavior newRoom)
     {
+        Debug.Log("Registering Room");
         int id = lastRoom ? lastRoom.id + 1 : 1;
 
         // Room Register
@@ -63,6 +63,7 @@ public class RoomManager : MonoBehaviour
     // Util Functions
     private void updateRoomBalance(RoomBehavior newRoom)
     {
+        Debug.Log("Updating Room Balance");
         RoomInfoSO roomInfo = newRoom.roomInfo;
         RoomDirection roomDirection = roomInfo.direction;
         Debug.Log(roomDirection);
