@@ -175,7 +175,7 @@ public class RoomPlacerBehavior : MonoBehaviour
         }
 
 
-        gridOccupancy.visualizeCells(areaCellSpaces); // See Door Spaces
+        // gridOccupancy.visualizeCells(areaCellSpaces); // See Door Spaces
 
         if (gridOccupancy.doCellsOverlap(lastRoomCells, areaCellSpaces)) { Debug.LogWarning("Door Ovelap With Previous Room"); return false; }
 

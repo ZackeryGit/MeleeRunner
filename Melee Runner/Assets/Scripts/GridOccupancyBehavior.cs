@@ -130,10 +130,10 @@ public class GridOccupancyBehavior : MonoBehaviour
                 color = Color.yellow;
             }
             // all four sides of the cell
-            Debug.DrawLine(cellCenter - new Vector3(cellSize / 2, 0, cellSize / 2), cellCenter + new Vector3(cellSize / 2, 0, -cellSize / 2), color, 50000f);
-            Debug.DrawLine(cellCenter - new Vector3(cellSize / 2, 0, -cellSize / 2), cellCenter + new Vector3(cellSize / 2, 0, cellSize / 2), color, 50000f);
-            Debug.DrawLine(cellCenter - new Vector3(cellSize / 2, 0, cellSize / 2), cellCenter + new Vector3(-cellSize / 2, 0, cellSize / 2), color, 50000f);
-            Debug.DrawLine(cellCenter + new Vector3(cellSize / 2, 0, cellSize / 2), cellCenter + new Vector3(cellSize / 2, 0, -cellSize / 2), color, 50000f);
+            Debug.DrawLine(cellCenter - new Vector3(cellSize / 2, 0, cellSize / 2), cellCenter + new Vector3(cellSize / 2, 0, -cellSize / 2), color, 10f);
+            Debug.DrawLine(cellCenter - new Vector3(cellSize / 2, 0, -cellSize / 2), cellCenter + new Vector3(cellSize / 2, 0, cellSize / 2), color, 10f);
+            Debug.DrawLine(cellCenter - new Vector3(cellSize / 2, 0, cellSize / 2), cellCenter + new Vector3(-cellSize / 2, 0, cellSize / 2), color, 10f);
+            Debug.DrawLine(cellCenter + new Vector3(cellSize / 2, 0, cellSize / 2), cellCenter + new Vector3(cellSize / 2, 0, -cellSize / 2), color, 10f);
         }
     }
     
