@@ -20,43 +20,68 @@ public class RoomPlacerBehavior : MonoBehaviour
     public RoomManager roomManager;
     public GridOccupancyBehavior gridOccupancy;
 
-    // ======== Public API ========
+    #region Actions
+
     public RoomBehavior CreateRoom()
     {
-        RoomBehavior newRoom = null;
+        // Pick Room
+        RoomInfoSO roomInfo = PickRoom();
 
+        // Return if no room was selected
+        if (roomInfo == null)
+        {
+            Debug.LogWarning("Could Not Spawn Room");
+            return null;
+        }
+
+        // Place Room
+        Pose spawnLocation = GetSpawnPose();
+        GameObject roomObj = Instantiate(roomInfo.roomPrefab, spawnLocation.position, spawnLocation.rotation);
+        RoomBehavior newRoom = roomObj.GetComponent<RoomBehavior>();
+
+        // Give Placed Room Its Own Information
+        newRoom.roomInfo = roomInfo;
+
+        // Delay occupy cells for next time this is ran
+        BoundaryBoxBehavior newRoomBounds = newRoom.roomBoundary.boundaryBox;
+        DelayOccupyCells(newRoomBounds);
+
+        return newRoom;
+    }
+
+    public RoomInfoSO PickRoom()
+    {
         for (int attempt = 0; attempt < attemptsToSpawn; attempt++)
         {
             RoomInfoSO roomInfo = roomSet.GetRandomRoom();
             if (roomInfo != null && CanPlaceRoom(roomInfo))
             {
-                Pose spawnLocation = GetSpawnPose();
-                GameObject roomObj = Instantiate(roomInfo.roomPrefab, spawnLocation.position, spawnLocation.rotation);
-
-                newRoom = roomObj.GetComponent<RoomBehavior>();
-                BoundaryBoxBehavior newRoomBounds = newRoom.roomBoundary.BoundaryBox;
-
-                if (lastRoomCells.Count > 0)
-                {
-                    gridOccupancy.SetOccupancy(lastRoomCells, OccupancyState.Occupied);
-                }
-
-                lastRoomCells = new List<Vector2Int>();
-
-                foreach (GameObject boundary in newRoomBounds.boundaryObjects)
-                {
-                    Bounds bound = boundary.GetComponent<Renderer>().bounds;
-                    lastRoomCells.AddRange(gridOccupancy.GetOccupiedCells(bound));
-                }
-
-                break;
+                return roomInfo;
             }
         }
 
-        return newRoom;
+        return null;
+    }
+    
+    public void DelayOccupyCells(BoundaryBoxBehavior newRoomBounds)
+    {
+        if (lastRoomCells.Count > 0)
+        {
+            gridOccupancy.SetOccupancy(lastRoomCells, OccupancyState.Occupied);
+        }
+
+        lastRoomCells = new List<Vector2Int>();
+
+        foreach (GameObject boundary in newRoomBounds.boundaryObjects)
+        {
+            Bounds bound = boundary.GetComponent<Renderer>().bounds;
+            lastRoomCells.AddRange(gridOccupancy.GetOccupiedCells(bound));
+        }
     }
 
-    // ======== Validation ========
+    #endregion
+
+    #region Validation
 
     private bool CanPlaceRoom(RoomInfoSO roomInfo)
     {
@@ -85,7 +110,7 @@ public class RoomPlacerBehavior : MonoBehaviour
         Pose spawnLocation = GetSpawnPose();
         GameObject boundary = Instantiate(boundaryPrefab, spawnLocation.position, spawnLocation.rotation);
         RoomBoundaryBehavior boundaryRoom = boundary.GetComponent<RoomBoundaryBehavior>();
-        BoundaryBoxBehavior boundaryBox = boundaryRoom.BoundaryBox;
+        BoundaryBoxBehavior boundaryBox = boundaryRoom.boundaryBox;
 
         // Check Test Boundary
         if (!DoBoundariesOverlap(boundaryBox)) { canPlace = false; }
@@ -150,7 +175,7 @@ public class RoomPlacerBehavior : MonoBehaviour
         }
 
 
-        // gridOccupancy.visualizeCells(areaCellSpaces); // See Door Spaces
+        gridOccupancy.visualizeCells(areaCellSpaces); // See Door Spaces
 
         if (gridOccupancy.doCellsOverlap(lastRoomCells, areaCellSpaces)) { Debug.LogWarning("Door Ovelap With Previous Room"); return false; }
 
@@ -166,7 +191,9 @@ public class RoomPlacerBehavior : MonoBehaviour
         return true;
     }
 
-    // ======== Helpers ========
+    #endregion
+
+    #region Helper Functions
 
     public Pose GetSpawnPose()
     {
@@ -205,5 +232,7 @@ public class RoomPlacerBehavior : MonoBehaviour
         return forward2dInt;
 
     }
+
+    #endregion
 }
 
