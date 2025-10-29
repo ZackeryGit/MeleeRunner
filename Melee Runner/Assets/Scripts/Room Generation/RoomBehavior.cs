@@ -13,7 +13,21 @@ public class RoomBehavior : MonoBehaviour
     [Header("Managers")]
     public RoomManager roomManager;
 
-    // Functions
+    #region Unity Functions
+
+    public void OnValidate()
+    {
+        // Auto Populate Room Boundary
+        if (roomBoundary == null)
+        {
+            transform.GetComponentInChildren<RoomBoundaryBehavior>();
+        }
+    }
+
+    #endregion
+
+    #region Actions
+
     public void OnPlayerEnter()
     {
         if (!hasEntered)
@@ -22,4 +36,7 @@ public class RoomBehavior : MonoBehaviour
             roomManager.OnRoomEnter(id);
         }
     }
+
+    #endregion
+
 }

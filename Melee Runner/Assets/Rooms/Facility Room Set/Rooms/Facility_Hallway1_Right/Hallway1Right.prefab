@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 2990
       objectReference: {fileID: 0}
+    - target: {fileID: 8633049976606429161, guid: bae9cebad3a03204691c287e47094e39, type: 3}
+      propertyPath: boundaryBox
+      value: 
+      objectReference: {fileID: 8067664964364295993}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -287,6 +291,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01159f4058d0992418b55b7ee7b7aa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryBehavior
+--- !u!114 &8067664964364295993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5977605446455419713, guid: bae9cebad3a03204691c287e47094e39, type: 3}
+  m_PrefabInstance: {fileID: 4396255346342378616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1d4c368c4253ec43b57b45a23a300b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoundaryBoxBehavior
 --- !u!4 &9066414362951091073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4670511136969670649, guid: bae9cebad3a03204691c287e47094e39, type: 3}

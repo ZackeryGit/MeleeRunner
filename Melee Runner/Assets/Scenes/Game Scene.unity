@@ -1775,6 +1775,8 @@ Transform:
   - {fileID: 1315461590}
   - {fileID: 868549187}
   - {fileID: 1744394584}
+  - {fileID: 2038761449}
+  - {fileID: 1837829998}
   m_Father: {fileID: 1512322124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
@@ -2226,8 +2228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomPlacerBehavior
   roomSet: {fileID: 11400000, guid: d7d43d6e64886b74db5a4c685b28c579, type: 2}
   attemptsToSpawn: 10
-  doorSpaceDepth: 10
-  doorSpaceWidth: 5
+  doorSpaceDepth: 13
+  doorSpaceWidth: 10
   roomManager: {fileID: 1120502172}
   gridOccupancy: {fileID: 1038619935}
 --- !u!1 &985926398 stripped
@@ -3828,8 +3830,6 @@ Transform:
   - {fileID: 315219744}
   - {fileID: 1773418511}
   - {fileID: 753322323}
-  - {fileID: 2038761449}
-  - {fileID: 1837829998}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1534319233 stripped
@@ -4763,7 +4763,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 100
+          m_IntArgument: 20
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4799,12 +4799,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837829997}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1, y: 1.25, z: -8.799999}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512322124}
+  m_Father: {fileID: 753322323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1837829999
 MonoBehaviour:
@@ -5260,12 +5260,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038761448}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.75, y: 1.25, z: -8.799999}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1512322124}
+  m_Father: {fileID: 753322323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2038761450
 BoxCollider:
