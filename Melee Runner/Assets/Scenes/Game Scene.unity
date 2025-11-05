@@ -313,6 +313,84 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4827169547572901738, guid: 9479b009f0812f54389bfcdc63c85c51, type: 3}
+--- !u!1 &196904330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196904331}
+  - component: {fileID: 196904332}
+  - component: {fileID: 196904333}
+  m_Layer: 0
+  m_Name: PlayerInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &196904331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196904330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 924241918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &196904332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196904330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1019402fc08d4be4a95891d7bd56b747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+  moveInput: {x: 0, y: 0}
+  lookInput: {x: 0, y: 0}
+  sprintInput: 0
+--- !u!114 &196904333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196904330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 8f6de2912c348794a9b5bfc824387dbd, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &227156834 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1038259858211179020, guid: bf1d3c889c4940e47b51717a58beac1a, type: 3}
@@ -1238,6 +1316,8 @@ GameObject:
   m_Component:
   - component: {fileID: 555380565}
   - component: {fileID: 555380566}
+  - component: {fileID: 555380567}
+  - component: {fileID: 555380569}
   m_Layer: 0
   m_Name: FPCamera
   m_TagString: Untagged
@@ -1305,6 +1385,48 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &555380567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555380564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9e1a76627a8f44ea5c145d3d3e7a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraHandler
+  pitchLimit: 90
+  lookSensitivity: {x: 35, y: 25}
+  fpCamera: {fileID: 555380566}
+  playerController: {fileID: 1773418516}
+  currentPitch: 0
+--- !u!143 &555380569
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555380564}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &577009053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1356014372909742768, guid: e1e7317178e4f844b9daa0013f32df17, type: 3}
@@ -2183,6 +2305,7 @@ Transform:
   m_Children:
   - {fileID: 1801149816}
   - {fileID: 1120502171}
+  - {fileID: 196904331}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965370272 stripped
@@ -4573,9 +4696,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1773418511}
   - component: {fileID: 1773418513}
-  - component: {fileID: 1773418512}
+  - component: {fileID: 1773418516}
   - component: {fileID: 1773418515}
-  - component: {fileID: 1773418514}
+  - component: {fileID: 1773418517}
+  - component: {fileID: 1773418518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4599,48 +4723,6 @@ Transform:
   - {fileID: 555380565}
   m_Father: {fileID: 1512322124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1773418512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773418510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1030758d4a996747a71decdeb675c5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  walkSpeed: 5
-  sprintSpeed: 10
-  acceleration: 48
-  gravity: 5
-  jumpPower: 12
-  doubleJumps: 0
-  cayoteTime: 0.2
-  jumpBufferTime: 0.15
-  pitchLimit: 80
-  lookSensitivity: {x: 40, y: 25}
-  onJump:
-    m_PersistentCalls:
-      m_Calls: []
-  onDoubleJump:
-    m_PersistentCalls:
-      m_Calls: []
-  moveInput: {x: 0, y: 0}
-  lookInput: {x: 0, y: 0}
-  jumpInput: 0
-  sprintInput: 0
-  fpCamera: {fileID: 555380566}
-  characterController: {fileID: 1773418513}
-  hasJumped: 0
-  remainingDoubleJumps: 0
-  cayoteTimer: 0
-  jumpBufferTimer: 0
-  currentSpeed: 0
-  currentPitch: 0
-  currentVelocity: {x: 0, y: 0, z: 0}
-  verticalVelocity: 0
 --- !u!143 &1773418513
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4666,36 +4748,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1773418514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773418510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 8f6de2912c348794a9b5bfc824387dbd, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1773418515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4705,11 +4757,73 @@ MonoBehaviour:
   m_GameObject: {fileID: 1773418510}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1019402fc08d4be4a95891d7bd56b747, type: 3}
+  m_Script: {fileID: 11500000, guid: e12b338b0518e184fabed0b0c38c1f38, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
-  playerController: {fileID: 1773418512}
-  swordBehavior: {fileID: 2017345296}
+  m_EditorClassIdentifier: Assembly-CSharp::MovementHandler
+  walkSpeed: 8
+  sprintSpeed: 12
+  acceleration: 48
+  weight: 4
+  velocity: {x: 0, y: 0, z: 0}
+  verticalVelocity: 0
+  currentSpeed: 0
+  isGrounded: 1
+  maxSpeed: 8
+--- !u!114 &1773418516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773418510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1030758d4a996747a71decdeb675c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  input: {fileID: 196904332}
+  movement: {fileID: 1773418515}
+  jump: {fileID: 1773418517}
+  sprint: {fileID: 1773418518}
+  cameraController: {fileID: 555380567}
+--- !u!114 &1773418517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773418510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ab3a063bff9584b825b4776fe16859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpBehavior
+  jumpPower: 10
+  doubleJumps: 0
+  cayoteTime: 0.2
+  bufferTime: 0.15
+  onJump:
+    m_PersistentCalls:
+      m_Calls: []
+  onDoubleJump:
+    m_PersistentCalls:
+      m_Calls: []
+  hasJumped: 0
+  remainingDoubleJumps: 0
+  cayoteTimer: 0
+  bufferTimer: 0
+--- !u!114 &1773418518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773418510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d65420f2d880b7488fe3ef7c9d5b8cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SprintBehavior
 --- !u!1 &1801149815
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,7 +4918,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1773418515}
+      - m_Target: {fileID: 196904332}
         m_TargetAssemblyTypeName: PlayerInput, Assembly-CSharp
         m_MethodName: LockMouse
         m_Mode: 1

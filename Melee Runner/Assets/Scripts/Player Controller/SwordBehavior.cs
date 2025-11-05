@@ -10,15 +10,21 @@ public class SwordBehavior : MonoBehaviour
     public void Swing()
     {
         LayerMask layerMask = LayerMask.GetMask("Default");
-        Debug.Log("Swing");
+        
         List<GameObject> objects = boundaryBoxBehavior.getOverlappingObjects(layerMask, "Breakable");
-        foreach(GameObject gameObject in objects)
+        foreach (GameObject gameObject in objects)
         {
-            if (gameObject.TryGetComponent<BreakableBehavior>(out BreakableBehavior breakable))
+            if (gameObject.TryGetComponent(out BreakableBehavior breakable))
             {
                 breakable.Damage(damage);
             }
         }
     }
+    
+    public void HandleToss()
+    {
+        
+    }
+
 
 }
