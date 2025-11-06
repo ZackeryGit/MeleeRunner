@@ -147,7 +147,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Jump
+      name: Falling
       takeName: Take 001
       internalID: -5059006814000262888
       firstFrame: 80
