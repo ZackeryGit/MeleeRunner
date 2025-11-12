@@ -1,24 +1,25 @@
 //Maya ASCII 2025ff03 scene
 //Name: Facility_Hallway_1.ma
-//Last modified: Tue, Nov 11, 2025 10:14:41 AM
+//Last modified: Wed, Nov 12, 2025 03:07:39 PM
 //Codeset: 1252
 requires maya "2025ff03";
 requires "stereoCamera" "10.0";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" -nodeType "aiSkyDomeLight"
 		 -nodeType "aiStandardSurface" -nodeType "aiPhysicalSky" -nodeType "aiImagerDenoiserOidn"
 		 "mtoa" "5.5.4.2";
+requires "stereoCamera" "10.0";
 currentUnit -l meter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2025";
 fileInfo "version" "2025";
 fileInfo "cutIdentifier" "202505300603-a12e894a3d";
 fileInfo "osv" "Windows 11 Home v2009 (Build: 26200)";
-fileInfo "UUID" "ED1C014A-4AD4-A7D6-D1FB-CEA326A8EB2C";
+fileInfo "UUID" "0DE028B4-4E2D-E443-15E7-50A582F1FD90";
 createNode transform -s -n "persp";
 	rename -uid "3127ACB0-4A38-B16D-8F2D-23A5FA1B8820";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 81.773059325268676 107.76714653471734 -28.39515262929087 ;
-	setAttr ".r" -type "double3" 307.46164729156908 -2436.6000000012746 -2.767212052163523e-14 ;
+	setAttr ".t" -type "double3" 171.12417883552473 110.2196319490748 -135.33710770191368 ;
+	setAttr ".r" -type "double3" 328.46164729036707 -2424.5999999996084 2.5444437451708134e-14 ;
 	setAttr ".rp" -type "double3" 1.1368683772161603e-15 4.263256414560601e-16 -2.2737367544323206e-15 ;
 	setAttr ".rpt" -type "double3" -1.2872975756355465e-15 -3.9881819514477971e-16 -3.8604516929069693e-17 ;
 createNode camera -s -n "perspShape" -p "persp";
@@ -26,7 +27,7 @@ createNode camera -s -n "perspShape" -p "persp";
 	setAttr -k off ".v" no;
 	setAttr ".fl" 34.999999999999979;
 	setAttr ".fd" 0.05;
-	setAttr ".coi" 131.00308497681354;
+	setAttr ".coi" 165.59620305964364;
 	setAttr ".ow" 0.1;
 	setAttr ".imn" -type "string" "persp";
 	setAttr ".den" -type "string" "persp_depth";
@@ -52276,20 +52277,20 @@ createNode mesh -n "polySurfaceShape21" -p "Medium_Doorway5";
 	setAttr ".pd[0]" -type "dataPolyComponent" Index_Data UV 0 ;
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "CE1CC159-4932-E52E-F722-C3A7622D2A04";
+	rename -uid "72D741BC-4E31-A1B1-5DF0-B7935FBF9A53";
 	setAttr -s 14 ".lnk";
 	setAttr -s 14 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "E0AB1E28-4786-0FBC-BFE0-829F857FE3C6";
+	rename -uid "7A2A1D56-4810-32F4-49E5-5EAC5B272606";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "A0C52723-401A-D03C-7121-FE96389EF508";
+	rename -uid "7CE3C699-4A1F-A980-0FC1-D9897CBCF016";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "573E385E-4311-5D6C-559E-47A647E671D6";
+	rename -uid "78330C8F-4157-8E80-DB1A-A5A95E5FF8AA";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "67D11868-42CC-6773-2B9D-8789BCBB68E4";
 	setAttr ".ufem" -type "stringArray" 0  ;
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "AFCB8C0A-4E53-5057-DC94-AAA4D7B7E5F7";
+	rename -uid "70BF47A7-415C-7A89-8AE3-329C9CA26E91";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "9E6A51A9-484C-6DCC-9398-B7BAD65C594A";
 	setAttr ".g" yes;
