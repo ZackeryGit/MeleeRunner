@@ -1,0 +1,15 @@
+The guide for all thing Melee Runner
+
+
+
+
+.ma project files for the game go into:
+
+Melee Runner > Maya_Project > Scenes
+
+
+
+
+Once finished, The .fbx or .obj go into:
+
+Melee Runner > Assets > Models > (File that makes sense or unorganized)
