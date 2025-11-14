@@ -19,6 +19,7 @@ public class RoomPlacerBehavior : MonoBehaviour
     [Header("Components")]
     public RoomManager roomManager;
     public GridOccupancyBehavior gridOccupancy;
+    public Transform roomParent;
 
     [Header("Info")]
     public float roomBalance = 0;
@@ -40,7 +41,7 @@ public class RoomPlacerBehavior : MonoBehaviour
 
         // Place Room
         Pose spawnLocation = GetSpawnPose();
-        GameObject roomObj = Instantiate(roomInfo.roomPrefab, spawnLocation.position, spawnLocation.rotation);
+        GameObject roomObj = Instantiate(roomInfo.roomPrefab, spawnLocation.position, spawnLocation.rotation, roomParent);
         RoomBehavior newRoom = roomObj.GetComponent<RoomBehavior>();
 
         // Update Room Balance

@@ -97,7 +97,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259493024515115547}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01159f4058d0992418b55b7ee7b7aa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomBoundaryBehavior
-  BoundaryBox: {fileID: 5977605446455419713}
+  boundaryBox: {fileID: 5977605446455419713}
   enterance: {fileID: 3223263540768119183}
   exit: {fileID: 4306252146506278778}
 --- !u!1001 &3868421351669021704

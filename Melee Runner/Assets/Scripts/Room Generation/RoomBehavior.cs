@@ -9,6 +9,7 @@ public class RoomBehavior : MonoBehaviour
     [Header("Components")]
     public RoomInfoSO roomInfo;
     public RoomBoundaryBehavior roomBoundary;
+    public DoorBehavior enteranceDoor;
 
     [Header("Managers")]
     public RoomManager roomManager;
@@ -20,8 +21,23 @@ public class RoomBehavior : MonoBehaviour
         // Auto Populate Room Boundary
         if (roomBoundary == null)
         {
-            transform.GetComponentInChildren<RoomBoundaryBehavior>();
+            roomBoundary = transform.GetComponentInChildren<RoomBoundaryBehavior>();
         }
+        if (enteranceDoor == null)
+        {
+            enteranceDoor = transform.GetComponentInChildren<DoorBehavior>();
+        }
+    }
+
+    public void Awake()
+    {
+        if (enteranceDoor != null)
+        {
+            Debug.Log("Door found");
+            enteranceDoor.onFastOpen.AddListener(OnPlayerEnter);
+            enteranceDoor.onOpen.AddListener(OnPlayerEnter);
+        }
+        
     }
 
     #endregion
