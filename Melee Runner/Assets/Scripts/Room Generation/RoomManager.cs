@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -8,7 +6,6 @@ public class RoomManager : MonoBehaviour
     public RoomPlacerBehavior roomPlacer;
 
     [Header("Settings")]
-    public IntDataSO maxRoomBalance;
     [SerializeField] private int roomsAhead;
     [SerializeField] private int roomsBehind;
 
@@ -16,7 +13,6 @@ public class RoomManager : MonoBehaviour
     private Dictionary<int, RoomBehavior> activeRooms = new Dictionary<int, RoomBehavior>();
 
     [Header("Info")]
-    public IntDataSO roomBalance;
     public RoomBehavior lastRoom = null;
     public int playerCurrentRoom = 0;
 
@@ -76,9 +72,6 @@ public class RoomManager : MonoBehaviour
 
         activeRooms.Add(newRoom.id, newRoom);
         lastRoom = newRoom;
-
-        // Manager  Update
-        updateRoomBalance(newRoom);
     }
 
     public void OnRoomEnter(int roomId)
@@ -97,26 +90,5 @@ public class RoomManager : MonoBehaviour
         addRooms(roomsToGenerate);
         removeRooms(roomsToDeleteMin, roomsToDeleteMax);
         
-    }
-
-    // Util Functions
-    private void updateRoomBalance(RoomBehavior newRoom)
-    {
-        Debug.Log("Updating Room Balance");
-        RoomInfoSO roomInfo = newRoom.roomInfo;
-        RoomDirection roomDirection = roomInfo.direction;
-        Debug.Log(roomDirection);
-        switch (roomDirection)
-        {
-            case RoomDirection.Left:
-                roomBalance.value--;
-                break;
-            case RoomDirection.Right:
-                roomBalance.value++;
-                break;
-            default:
-                break;
-        };
-        Debug.Log(roomBalance.value);
     }
 }

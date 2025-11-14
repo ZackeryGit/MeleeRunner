@@ -5,12 +5,18 @@ using UnityEngine.Events;
 public class SwordBehavior : MonoBehaviour
 {
 
-    public float swingCooldown = .75f;
-    private float swingTimer = 0f;
-    public float comboCooldown = 2f;
-    public float comboTimer = 0f;
-    public float combo = 0;
-    public float damage = 100f;
+    [Header("Settings")]
+    [SerializeField] private float damage = 100f;
+    [SerializeField] private float swingCooldown = .75f;
+    [SerializeField] private float comboCooldown = 2f;
+    [SerializeField] private float swingBuffer = .15f;
+
+    [Header("Info")]
+    [SerializeField] private float swingTimer = 0f;
+    [SerializeField] private float comboTimer = 0f;
+    [SerializeField] private float bufferTimer = 0f;
+    [SerializeField] private float combo = 0;
+
     public BoundaryBoxBehavior boundaryBoxBehavior;
 
     public UnityEvent onSwing, onSwing2;
@@ -22,6 +28,16 @@ public class SwordBehavior : MonoBehaviour
             swingTimer -= Time.deltaTime;
         }
 
+        if (bufferTimer > 0f)
+        {
+            bufferTimer -= Time.deltaTime;
+
+            if (swingTimer <= 0)
+            {
+                Swing();
+            }
+        }
+
         if (comboTimer > 0f)
         {
             comboTimer -= Time.deltaTime;
@@ -31,10 +47,13 @@ public class SwordBehavior : MonoBehaviour
         }
     }
 
+    public void QueueSwing()
+    {
+        bufferTimer = swingBuffer;
+    }
+
     public void Swing()
     {
-        if (swingTimer > 0) { return; } // Cooldown is on
-
         swingTimer = swingCooldown;
         comboTimer = comboCooldown;
 

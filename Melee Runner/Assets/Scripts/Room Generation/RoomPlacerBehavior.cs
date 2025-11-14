@@ -20,6 +20,10 @@ public class RoomPlacerBehavior : MonoBehaviour
     public RoomManager roomManager;
     public GridOccupancyBehavior gridOccupancy;
 
+    [Header("Info")]
+    public float roomBalance = 0;
+    public float maxBalance = 1;
+
     #region Actions
 
     public RoomBehavior CreateRoom()
@@ -39,6 +43,9 @@ public class RoomPlacerBehavior : MonoBehaviour
         GameObject roomObj = Instantiate(roomInfo.roomPrefab, spawnLocation.position, spawnLocation.rotation);
         RoomBehavior newRoom = roomObj.GetComponent<RoomBehavior>();
 
+        // Update Room Balance
+        UpdateRoomBalance(newRoom);
+
         // Give Placed Room Its Own Information
         newRoom.roomInfo = roomInfo;
 
@@ -53,7 +60,7 @@ public class RoomPlacerBehavior : MonoBehaviour
     {
         for (int attempt = 0; attempt < attemptsToSpawn; attempt++)
         {
-            RoomInfoSO roomInfo = roomSet.GetRandomRoom();
+            RoomInfoSO roomInfo = GetRandomRoom();
             if (roomInfo != null && CanPlaceRoom(roomInfo))
             {
                 return roomInfo;
@@ -155,7 +162,7 @@ public class RoomPlacerBehavior : MonoBehaviour
         List<Vector2Int> areaCellSpaces = new List<Vector2Int>(doorCellSpaces);
 
         // Get Direction
-        Vector2Int direction = getDirectionValue(exit);
+        Vector2Int direction = GetDirectionValue(exit);
         Vector2Int right = new Vector2Int(-direction.y, direction.x);
 
         // Get Cells
@@ -191,6 +198,26 @@ public class RoomPlacerBehavior : MonoBehaviour
         return true;
     }
 
+    private void UpdateRoomBalance(RoomBehavior newRoom)
+    {
+        Debug.Log("Updating Room Balance");
+        RoomInfoSO roomInfo = newRoom.roomInfo;
+        RoomDirection roomDirection = roomInfo.direction;
+        Debug.Log(roomDirection);
+        switch (roomDirection)
+        {
+            case RoomDirection.Left:
+                roomBalance--;
+                break;
+            case RoomDirection.Right:
+                roomBalance++;
+                break;
+            default:
+                break;
+        };
+        Debug.Log(roomBalance);
+    }
+
     #endregion
 
     #region Helper Functions
@@ -213,7 +240,7 @@ public class RoomPlacerBehavior : MonoBehaviour
         return pose;
     }
 
-    public Vector2Int getDirectionValue(GameObject gameObject)
+    public Vector2Int GetDirectionValue(GameObject gameObject)
     {
         Vector3 forward = gameObject.transform.forward;
         Vector2 forward2d = new Vector2(forward.x, forward.z).normalized;
@@ -231,6 +258,65 @@ public class RoomPlacerBehavior : MonoBehaviour
 
         return forward2dInt;
 
+    }
+
+    public RoomInfoSO GetRandomRoom()
+    {
+        List<RoomInfoSO> possibleRooms = PossibleRooms(roomSet.rooms);
+        float totalWeight = 0f;
+
+        // Calculate Total Weight
+        foreach (RoomInfoSO room in possibleRooms)
+        {
+            totalWeight += room.spawnWeight;
+        }
+
+        // Get Random Value
+        float randomValue = UnityEngine.Random.Range(0f, totalWeight);
+        float cumulativeWeight = 0f;
+
+        // Select Room Based on Weight
+        foreach (RoomInfoSO room in possibleRooms)
+        {
+            cumulativeWeight += room.spawnWeight;
+            if (randomValue <= cumulativeWeight)
+            {
+                return room;
+            }
+        }
+
+        Debug.LogError("GetRandomRoom: No room selected, check spawn weights calculations.");
+        return null; // Fallback (shouldn't reach here if weights are set correctly)
+
+    } 
+
+    public List<RoomInfoSO> PossibleRooms(List<RoomInfoSO> list) // Gots to be changed
+    {
+        List<RoomInfoSO> possibleRooms = list;
+
+        if (roomBalance <= -maxBalance)
+        {
+            possibleRooms = RemoveDirectionFromList(possibleRooms, RoomDirection.Left);
+        }
+        else if (roomBalance >= maxBalance)
+        {
+            possibleRooms = RemoveDirectionFromList(possibleRooms, RoomDirection.Right);
+        }
+
+        return possibleRooms;
+    }
+
+    private List<RoomInfoSO> RemoveDirectionFromList(List<RoomInfoSO> list, RoomDirection dir)
+    {
+        List<RoomInfoSO> newList = new List<RoomInfoSO>(list);
+        foreach (RoomInfoSO room in list)
+        {
+            if (room.direction == dir)
+            {
+                newList.Remove(room);
+            }
+        }
+        return newList;
     }
 
     #endregion

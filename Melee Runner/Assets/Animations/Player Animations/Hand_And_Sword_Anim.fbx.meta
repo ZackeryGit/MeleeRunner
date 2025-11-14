@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a8a28237b5b6f0240a4d1aa8cceee3d6
+guid: b944644336e1a414281fe209c653fca3
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Left Slash
+      name: Left Swing
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 1
-      lastFrame: 26
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,9 +62,9 @@ ModelImporter:
     - serializedVersion: 16
       name: Toss
       takeName: Take 001
-      internalID: -998496362607748373
-      firstFrame: 26
-      lastFrame: 60
+      internalID: 9067093048684652814
+      firstFrame: 60
+      lastFrame: 91
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -89,11 +89,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Right Slash
+      name: Right Swing
       takeName: Take 001
       internalID: 3060872287085348379
-      firstFrame: 60
-      lastFrame: 80
+      firstFrame: 31
+      lastFrame: 46
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -121,8 +121,8 @@ ModelImporter:
       name: Run
       takeName: Take 001
       internalID: 6641085478485924818
-      firstFrame: 80
-      lastFrame: 90
+      firstFrame: 100
+      lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -147,11 +147,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 1
     - serializedVersion: 16
-      name: Falling
+      name: Jump
       takeName: Take 001
       internalID: -5059006814000262888
-      firstFrame: 80
-      lastFrame: 90
+      firstFrame: 100
+      lastFrame: 110
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

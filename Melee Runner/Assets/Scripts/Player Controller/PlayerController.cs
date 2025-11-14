@@ -40,6 +40,6 @@ public class PlayerController : MonoBehaviour
     
     void HandleSlash()
     {
-        sword.Swing();
+        sword.QueueSwing();
     }
 }
