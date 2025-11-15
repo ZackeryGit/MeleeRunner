@@ -7,13 +7,14 @@ public class DoorBehavior : MonoBehaviour
     [SerializeField] private bool opened = false;
     [SerializeField] private bool locked = false;
 
-    public UnityEvent onOpen, onClose, onFastOpen, onLockedOpen;
+    public UnityEvent onOpen, onClose, onFastOpen, onLocked, onUnlocked, onLockedOpen;
     
     public void Open()
     {
         Debug.Log("Open");
-        if (locked == false)
+        if (locked == false && opened == false)
         {
+            opened = true;
             onOpen.Invoke();
         } else {
             onLockedOpen.Invoke();
@@ -22,8 +23,9 @@ public class DoorBehavior : MonoBehaviour
 
     public void FastOpen()
     {
-        if (locked == false)
+        if (locked == false && opened == false)
         {
+            opened = true;
             onFastOpen.Invoke();
         } else {
             onLockedOpen.Invoke();
@@ -37,12 +39,14 @@ public class DoorBehavior : MonoBehaviour
 
     public void Lock()
     {
+        onLocked.Invoke();
         locked = true;
         Close();
     }
 
     public void Unlock()
     {
+        onUnlocked.Invoke();   
         locked = false;
     }
 

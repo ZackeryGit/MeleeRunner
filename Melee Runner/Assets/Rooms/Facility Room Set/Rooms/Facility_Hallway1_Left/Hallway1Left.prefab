@@ -52,6 +52,7 @@ MonoBehaviour:
   id: 0
   roomInfo: {fileID: 11400000, guid: 1b4edb8d5cfc02f428ef2ff5ee271077, type: 2}
   roomBoundary: {fileID: 7913409310159868724}
+  enteranceDoor: {fileID: 1817975413836429534}
   roomManager: {fileID: 0}
 --- !u!1 &3314665842275580549
 GameObject:
@@ -371,6 +372,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1392002267460229705}
     m_Modifications:
+    - target: {fileID: 815850457959708404, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3545097759672766445, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}
       propertyPath: m_Name
       value: FacilityDoor
@@ -456,6 +461,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}
+--- !u!114 &1817975413836429534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4417060919103795080, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}
+  m_PrefabInstance: {fileID: 2627342962692724566}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d583131416c6ac488925ffabcda067a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorBehavior
 --- !u!4 &8497937885084268060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5879607620014448970, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
@@ -47,6 +48,8 @@ public class RoomManager : MonoBehaviour
             {
                 Destroy(room.gameObject);
                 activeRooms.Remove(roomId);
+                RoomBehavior currentFirstRoom = activeRooms[activeRooms.Keys.Min()];
+                currentFirstRoom.enteranceDoor.Lock();
                 Debug.Log("Removed Room: " + roomId);
             }
         }
@@ -91,4 +94,5 @@ public class RoomManager : MonoBehaviour
         removeRooms(roomsToDeleteMin, roomsToDeleteMax);
         
     }
+
 }
