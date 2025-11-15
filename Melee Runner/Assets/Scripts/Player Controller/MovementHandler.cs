@@ -52,7 +52,7 @@ public class MovementHandler : MonoBehaviour
         // Gravity
         if (characterController.isGrounded && velocity.y <= 0.01f)
         {
-            velocity.y = -1f; // small downward push
+            velocity.y = -3f; // small downward push
         }
         else
         {
