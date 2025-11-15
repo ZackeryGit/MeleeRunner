@@ -52,6 +52,7 @@ MonoBehaviour:
   id: 0
   roomInfo: {fileID: 11400000, guid: 3a21358ed06ddf647808124ef36ea249, type: 2}
   roomBoundary: {fileID: 5389792561671189393}
+  enteranceDoor: {fileID: 2379700095985838419}
   roomManager: {fileID: 0}
 --- !u!1 &3314665842275580549
 GameObject:
@@ -347,6 +348,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}
+--- !u!114 &2379700095985838419 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4417060919103795080, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}
+  m_PrefabInstance: {fileID: 2038698112893306587}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d583131416c6ac488925ffabcda067a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorBehavior
 --- !u!4 &5607657578137380753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5879607620014448970, guid: 3b90bc82ca17661409338efdaeb0fb7e, type: 3}
