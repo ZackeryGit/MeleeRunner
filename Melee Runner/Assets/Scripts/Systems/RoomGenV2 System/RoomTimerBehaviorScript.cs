@@ -6,6 +6,7 @@ public class RoomTimerBehaviorScript : MonoBehaviour
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private int currentRoomId = -1;
     [SerializeField] public float multiplier = 1;
+    [SerializeField] private bool timerEnabled = false;
     
     private Coroutine currentTimer = null;
     private int FirstRoomID => roomManager.GetFirstRoom().id;
@@ -18,6 +19,7 @@ public class RoomTimerBehaviorScript : MonoBehaviour
     public void StartTimer()
     {
         SetTimerAt(FirstRoomID);
+        enabled = true;
     }
 
     public void PauseTimer()
@@ -52,7 +54,7 @@ public class RoomTimerBehaviorScript : MonoBehaviour
     private void TimerEnded()
     {
         // Start Next Room
-        if (roomManager.activeRooms.TryGetValue(currentRoomId + 1, out _))
+        if (roomManager.activeRooms.TryGetValue(currentRoomId + 1, out _) && timerEnabled == true)
         {
             SetTimerAt(currentRoomId + 1);
         }
@@ -64,7 +66,7 @@ public class RoomTimerBehaviorScript : MonoBehaviour
         if (roomManager.activeRooms.TryGetValue(currentRoomId, out _))
         {
             
-        } else
+        } else if (timerEnabled == true)
         {
             Debug.Log("Room Removed Detected, Moving Forawrd");
             SetTimerAt(FirstRoomID);

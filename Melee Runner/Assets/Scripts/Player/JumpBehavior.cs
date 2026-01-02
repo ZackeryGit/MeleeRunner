@@ -31,7 +31,7 @@ public class JumpBehavior : MonoBehaviour
     {
         cayoteTimer -= Time.deltaTime;
 
-        if (movementHandler.isGrounded)
+        if (movementHandler.isGrounded && movementHandler.velocity.y <= 0.01f)
         {
             hasJumped = false;
             cayoteTimer = cayoteTime;
@@ -60,6 +60,7 @@ public class JumpBehavior : MonoBehaviour
 
     public void Jump()
     {
+        Debug.Log("Jump");
         onJump.Invoke();
 
         hasJumped = true;

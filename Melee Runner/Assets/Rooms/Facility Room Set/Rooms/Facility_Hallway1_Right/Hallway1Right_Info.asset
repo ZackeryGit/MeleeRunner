@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomInfoSO
   roomPrefab: {fileID: 908550872136829123, guid: 26f436f055825594087b970cfabf9e20, type: 3}
   boundaryPrefab: {fileID: 5552420531865971453, guid: bae9cebad3a03204691c287e47094e39, type: 3}
-  spawnWeight: 50
+  spawnWeight: 30
   roomTimer: 5
   direction: 1
